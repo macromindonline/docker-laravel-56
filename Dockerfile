@@ -9,4 +9,6 @@ COPY apache2-foreground /usr/local/bin/
 
 EXPOSE 80
 
+WORKDIR /var/www/html/
+
 CMD ["apache2-foreground"]
