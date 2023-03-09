@@ -12,4 +12,5 @@ EXPOSE 80
 
 WORKDIR /var/www/html/
 
-RUN rm -f /var/run/apache2/apache2.pid && apache2 -DFOREGROUND
+RUN rm -f /var/run/apache2/apache2.pid 
+RUN apache2 -DFOREGROUND &
