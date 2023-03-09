@@ -13,4 +13,4 @@ EXPOSE 80
 
 WORKDIR /var/www/html/
 
-CMD ["apache2-foreground"]
+RUN rm -f /var/run/apache2/apache2.pid && apache2 -DFOREGROUND
