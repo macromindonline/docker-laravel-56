@@ -2,8 +2,10 @@ FROM macromind/docker-apache-php72:latest
 LABEL description="Laravel 5.6"
 
 RUN apt update && apt install fontconfig libxrender1 xfonts-75dpi xfonts-base xvfb wkhtmltopdf -y && apt autoremove -y && apt clean && rm -rf /var/lib/apt/lists/*
+RUN a2enmod headers
 ADD conf/000-docker.conf /etc/apache2/sites-available/
 RUN /usr/sbin/a2dissite '*' && /usr/sbin/a2ensite 000-docker
+ADD conf/mpm_prefork.conf /etc/apache2/mods-available/
 COPY apache2-foreground /usr/local/bin/
 RUN sed -i -e 's/\r$//' /usr/local/bin/apache2-foreground
 EXPOSE 80
